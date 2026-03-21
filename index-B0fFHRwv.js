@@ -10442,19 +10442,20 @@ R.load()
                 style: Dt({
                     backgroundImage: `url('${p.value}')`
                 })
-            }, null, 4), V("div", V3, be(te(e).alias || "嘎嘎的歌單")) , V("div", z3, [V("button", {
-                class: "sidebar-link sidebar-profile-button",
-                type: "button",
-                onClick: y[0] || (y[0] = R => d.value = !0)
-            }, " 主播檔案 "), te(e).liveLink ? (Y(),
-            M("a", {
-                key: 0,
-                // 修改後的樣子（直接寫死你的 GitHub Pages 網址）
-                href: "https://timmy1015-student.github.io/portfolio/",
-                class: "sidebar-link sidebar-profile-button",
-                target: "_blank",
-                rel: "noreferrer"
-            }, " 前往主頁 ", 8, H3)) : de("", !0)])]), V("div", U3, [V("button", {
+            }, null, 4),// ...前面的代碼
+            V("div", V3, be(te(e).alias || "嘎嘎的歌單")), 
+            V("div", z3, [
+                V("button", {
+                    class: "sidebar-link sidebar-profile-button",
+                    type: "button",
+                    onClick: y[0] || (y[0] = R => d.value = !0)
+                }, " 主播檔案 "), 
+                V("a", {
+                    href: "https://timmy1015-student.github.io/portfolio/",
+                    class: "sidebar-link sidebar-profile-button",
+                    rel: "noreferrer"
+                }, " 前往主頁 ")
+            ])]), V("div", U3, [V("button", {
                 class: "sidebar-action",
                 type: "button",
                 onClick: L
