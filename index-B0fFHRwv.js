@@ -3069,16 +3069,10 @@ function lo(s, e) {
             if (v.isMounted) {
                 let {next: Q, bu: W, u: ee, parent: ne, vnode: we} = v;
                 {
-                    const As = oi(v);
-                    if (As) {
-                        Q && (Q.el = we.el,
-                        T(v, Q, Z)),
-                        As.asyncDep.then( () => {
-                            v.isUnmounted || K()
-                        }
-                        );
-                        return
-                    }
+                    // ✅ 無論在什麼網域，強行讀取專案根目錄下的 list.txt
+                    const A = () => {
+                        return "./list.txt"; 
+                    };
                 }
                 let re = Q, We;
                 Ft(v, !1),
@@ -10204,12 +10198,9 @@ const Bh = {
             return T === "localhost" || T === "127.0.0.1" || T === "::1"
         }
           , r = T => T === "nilianlily.cn" || T.endsWith(".nilianlily.cn")
-          , u = he(i() ? {
+          , u = he({
             type: "video",
-            src: "/background.mp4"
-        } : {
-            type: "image",
-            src: "data:,"
+            src: "./background.mp4"
         })
           , p = he(_b)
           , m = Fe( () => c.value === "list" ? "切換平鋪模式" : c.value === "monitor" ? "切換3D模式" : c.value === "sphere" ? "切換彈幕模式" : "切換列表模式")
@@ -10222,24 +10213,8 @@ const Bh = {
             n.value = T
         }
           , C = T => T === "themis-wife.vsinger.ink" || T === "songlist.aria.fish" ? "songlist-aria-fish" : T === "aria-wife.vsinger.ink" || T === "themis.vsinger.ink" ? "themis" : T.endsWith("vsinger.ink") ? T.split(".")[0] ?? T : T.replace(/\./g, "-")
-          , A = () => {
-            const T = window.location.hostname;
-            if (T === "localhost" || T === "127.0.0.1" || T === "::1")
-                return "/list.txt";
-            if (r(T))
-                return `${Ab}list.txt`;
-            const y = C(T);
-            return `${Tb}${y}/list.txt`
-        }
-          , E = () => {
-            const T = window.location.hostname;
-            if (T === "localhost" || T === "127.0.0.1" || T === "::1")
-                return "/";
-            if (r(T))
-                return Ab;
-            const y = C(T);
-            return `${Tb}${y}/`
-        }
+          , A = () => "./list.txt"
+          ,E = () => "./"
           , D = T => r(T) ? _b : {
             "weisteria.vsinger.ink": "https://s1.hdslb.com/bfs/face/ac736bacfbbc0e791cc15547454fde39eb34ac09.jpg@240w_240h.webp",
             "guan.vsinger.ink": "https://s1.hdslb.com/bfs/face/e683a1ee7b15b347e6e22ab8b7e34f44de2f4f5e.jpg@240w_240h.webp",
