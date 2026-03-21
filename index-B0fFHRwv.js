@@ -4752,36 +4752,46 @@ function r1(s, e, t) {
 const Ra = "playing_cards.png";
 function h1(s) {
     const e = s.split(/\r?\n/)
-      , t = e[0]?.split("	")[0]?.trim() ?? ""
-      , c = e[1]?.split("	")[0]?.trim() ?? ""
+      , t = e[0]?.split("\t")[0]?.trim() ?? ""
+      , c = e[1]?.split("\t")[0]?.trim() ?? ""
       , f = e.slice(3)
       , b = [];
+
     for (const n of f) {
         if (!n || n.trim() === "")
             continue;
-        const l = n.split("	").map(w => w.trim())
-          , [i,r,u,p,m,h,g] = [l[0] ?? "", l[1] ?? "", l[2] ?? "", l[3] ?? "", l[4] ?? "", l[5] ?? "", l[6] ?? ""];
-        r && b.push({
-            id: `song-${b.length + 1}`,
-            title: r,
-            artist: u || void 0,
-            language: p || void 0,
-            genre: m || void 0,
-            sc: h ?? "",
-            remarks: g ?? "",
-            isNew: i === "1",
-            tags: []
-        })
+        const l = n.split("\t").map(w => w.trim())
+          , [i, r, u, p, m, h, g] = [l[0] ?? "", l[1] ?? "", l[2] ?? "", l[3] ?? "", l[4] ?? "", l[5] ?? "", l[6] ?? ""];
+        
+        if (r) {
+            b.push({
+                id: `song-${b.length + 1}`,
+                title: r,
+                artist: u || void 0,
+                language: p || void 0,
+                genre: m || void 0,
+                sc: h ?? "",
+                remarks: g ?? "",
+                isNew: i === "1",
+                tags: []
+            });
+        }
     }
-    const d = []
-      , a = [];
-    for (const n of b)
+
+    // 將歌曲分為「新歌」與「舊歌」兩組
+    const d = [] // 存放新歌
+      , a = [];  // 存放一般歌曲
+
+    for (const n of b) {
         n.isNew ? d.push(n) : a.push(n);
+    }
+
+    // 最後才回傳，並將新歌合併在最前面
     return {
         alias: t,
         liveLink: c,
         songs: d.concat(a)
-    }
+    };
 }
 const p1 = r1("song", {
     state: () => ({
