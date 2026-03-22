@@ -48,7 +48,7 @@
             cursor: move; user-select: none; touch-action: none;
         }
 
-        .close-player { position: absolute; top: 5px; right: 8px; cursor: pointer; font-size: 18px; color: #999; font-weight: bold; line-height: 1; z-index: 10; }
+        .close-player { position: absolute; top: 5px; right: 8px; cursor: pointer; font-size: 25px; color: #999; font-weight: bold; line-height: 1; z-index: 10; }
         .close-player:hover { color: #ff4444; }
         #now-playing { font-weight: bold; color: #3949ab; font-size: 14px; margin-bottom: 12px; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px; min-height: 24px; line-height: 24px; }
         [data-theme="dark"] #now-playing { color: #818cf8; }
@@ -300,7 +300,24 @@
 
         let currentAudio = null;
 
-        document.addEventListener('click', function(e) {
+       document.addEventListener('click', function(e) {
+            // --- 新增：處理點擊「複製歌名」按鈕的邏輯 ---
+            if (e.target && e.target.classList.contains('monitor-copy')) {
+                const songTitle = document.querySelector('.monitor-title')?.innerText || "";
+                if (songTitle) {
+                    navigator.clipboard.writeText(songTitle).then(() => {
+                        // 調用你代碼中原本就有的全域提示函數 Ed
+                        if (typeof Ed === 'function') {
+                            Ed("已複製歌曲名");
+                        } else {
+                            alert("已複製歌名：" + songTitle);
+                        }
+                    });
+                }
+                return; // 執行完複製就退出，不要往下跑播放音樂的邏輯
+            }
+            // ----------------------------------------
+
             if (e.target.id === 'injected-hide-btn' || e.target.id === 'injected-theme-btn') return;
             const target = e.target;
             const isVisualItem = target.classList.contains('tag-cloud-item') || target.classList.contains('danmaku-item') || target.classList.contains('unit-text');

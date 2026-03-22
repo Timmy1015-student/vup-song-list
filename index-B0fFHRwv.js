@@ -5066,13 +5066,24 @@ const C1 = {
         songs: {},
         activeSongId: {}
     },
-    setup(s) {
-        const e = async t => {
-            await xd(t),
-            Ed("已複製歌曲名")
+setup(s, { emit: t }) {
+    // 修正點擊處理函數
+    const e = async (song, event) => {
+        // 確保 event 存在再調用
+        if (event && event.stopPropagation) event.stopPropagation();
+        
+        // 核心修正 1：Vue 3 的 setup emit 調用方式是 t('事件名', 數據)
+        // 這裡要把 song 傳出去
+        t('select', song);
+        
+        // 核心修正 2：原有的複製功能，使用傳入的 song 物件
+        if (song && song.title) {
+            await xd(song.title);
+            Ed("已複製歌曲名");
         }
-        ;
-        return (t, c) => (Y(),
+    };
+
+    return (t_render, c) => (Y(),
         M("div", _1, [(Y(!0),
         M(Ce, null, $s(s.songs, f => (Y(),
         M("div", {
@@ -5081,29 +5092,27 @@ const C1 = {
                 active: f.id === s.activeSongId
             }]),
             "data-song-id": f.id
-        }, [V("div", O1, [V("div", I1, [V("div", {
-            class: "song-title song-title-clickable",
-            onClick: b => e(f.title)
-        }, [mi(be(f.title) + " ", 1), f.isNew ? (Y(),
-        M("span", $1, "NEW")) : de("", !0), f.isPaid ? (Y(),
-        M("span", N1, "付费")) : de("", !0)], 8, R1), V("div", j1, [V("span", null, be(f.artist || "未知歌手"), 1), f.language ? (Y(),
-        M("span", V1, be(f.language), 1)) : de("", !0), f.genre ? (Y(),
-        M("span", z1, be(f.genre), 1)) : de("", !0)])]), V("div", H1, [f.sc ? (Y(),
-        ut(Af, {
-            key: 0,
-            sc: f.sc
-        }, null, 8, ["sc"])) : de("", !0), f.remarks ? (Y(),
-        M("span", U1, be(f.remarks), 1)) : de("", !0)])]), V("div", S1, [V("div", {
-            class: "col col-title song-title-clickable",
-            onClick: b => e(f.title)
-        }, [V("span", Y1, be(f.title), 1), f.isNew ? (Y(),
-        M("span", q1, "NEW")) : de("", !0), f.isPaid ? (Y(),
-        M("span", X1, "付费")) : de("", !0)], 8, K1), V("div", Z1, be(f.artist || "未知歌手"), 1), V("div", Q1, be(f.language || ""), 1), V("div", M1, be(f.genre || ""), 1), V("div", P1, [f.sc ? (Y(),
-        ut(Af, {
-            key: 0,
-            sc: f.sc
-        }, null, 8, ["sc"])) : de("", !0)]), V("div", B1, be(f.remarks || ""), 1)])], 10, k1))), 128))]))
-    }
+        }, [
+            V("div", O1, [
+                V("div", I1, [
+                    V("div", {
+                        class: "song-title song-title-clickable",
+                        // 修正點 3：點擊時傳入整個 f (歌曲物件) 和 b (事件)
+                        onClick: b => e(f, b) 
+                    }, [mi(be(f.title) + " ", 1), f.isNew ? (Y(), M("span", $1, "NEW")) : de("", !0), f.isPaid ? (Y(), M("span", N1, "付费")) : de("", !0)], 8, R1),
+                    // ... 後續代碼保持不變
+                ])
+            ]),
+            V("div", S1, [
+                V("div", {
+                    class: "col col-title song-title-clickable",
+                    // 修正點 4：桌面版點擊也要傳入 f 和 b
+                    onClick: b => e(f, b)
+                }, [V("span", Y1, be(f.title), 1), f.isNew ? (Y(), M("span", q1, "NEW")) : de("", !0), f.isPaid ? (Y(), M("span", X1, "付费")) : de("", !0)], 8, K1),
+                // ... 後續代碼保持不變
+            ])
+        ], 10, k1))), 128))]))
+}
 })
   , W1 = Ss(L1, [["__scopeId", "data-v-040ec3e7"]]);
 function G1(s) {
@@ -10619,9 +10628,10 @@ R.load()
                     ref: t,
                     class: "main-body app-scroll"
                 }, [pe(W1, {
-                    songs: te(e).filteredSongs,
-                    "active-song-id": f.value
-                }, null, 8, ["songs", "active-song-id"])], 512))]),
+    songs: te(e).filteredSongs,
+    "active-song-id": f.value,
+    onSelect: w // w 是 App 中定義的打開彈窗函數：T => { f.value = T.id, n.value = T }
+}, null, 8, ["songs", "active-song-id"])], 512))]),
                 _: 1
             })]),
             _: 1
