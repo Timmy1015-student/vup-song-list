@@ -1575,18 +1575,23 @@ body {
     font-size: 12px
 }
 
+/* 隱藏詳情彈窗中的備註/檔名行 */
 .monitor-remarks[data-v-d5b320b2] {
-    color: #2d343bbf
+    display: none !important;
+}
+/* 同時隱藏抽卡背面的備註/檔名行 */
+.card-remarks[data-v-3d17bb05] {
+    display: none !important;
 }
 
 .monitor-copy[data-v-d5b320b2] {
     margin-top: 16px;
-    width: 100%;
+    width: 50%;
     padding: 10px 14px;
     border-radius: 12px;
     border: 1px solid rgba(30,36,42,.2);
     background: #1e242a0f;
-    color: #1e242ae6;
+    color: #924200;
     font-weight: 600;
     cursor: pointer
 }

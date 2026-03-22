@@ -10176,7 +10176,7 @@ const Bh = {
     class: "profile-card",
     role: "dialog",
     "aria-modal": "true",
-    "aria-label": "主播档案"
+    "aria-label": "主播檔案"
 }
   , Tb = "https://songlist-1252424442.cos.accelerate.myqcloud.com/"
   , Ab = "https://nilianlily-1252424442.cos.ap-shanghai.myqcloud.com/www-nilianlily-cn/"
@@ -10280,7 +10280,7 @@ const Bh = {
                 }
                 u.value = {
                     type: "image",
-                    src: `${T}background.mp4`
+                    src: ""
                 };
                 return
             }
@@ -10290,7 +10290,7 @@ const Bh = {
                 if (await F(fe) && k()) {
                     u.value = {
                         type: "video",
-                        src: fe
+                        src: ""
                     };
                     return
                 }
@@ -10306,7 +10306,7 @@ const Bh = {
             if (r(y) && window.innerWidth > 768) {
                 u.value = {
                     type: "image",
-                    src: `${T}background.mp4`
+                    src: ""
                 };
                 return
             }
