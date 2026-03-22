@@ -9956,13 +9956,13 @@ const Bh = {
             M("span", d3, be(_.song.language), 1)) : de("", !0), _.song.genre ? (Y(),
             M("span", a3, be(_.song.genre), 1)) : de("", !0)])) : de("", !0), V("div", {
                 class: qe(["card-row card-sc", {
-                    "is-empty": !_.song.sc
+
                 }])
             }, [_.song.sc ? (Y(),
             ut(Af, {
                 key: 0,
                 sc: _.song.sc
-            }, null, 8, ["sc"])) : de("", !0)], 2), _.song.remarks ? (Y(),
+            }, null, 8, ["sc"])) : de("", !0)], 2), "" ? (Y(),
             M("div", n3, be(_.song.remarks), 1)) : de("", !0)]), V("button", {
                 class: "card-copy",
                 type: "button",
@@ -10318,7 +10318,7 @@ const Bh = {
         }
           , $ = T => {
             const y = T?.trim() || "主播名稱";
-            document.title = `${y}的歌單`
+            document.title = `嘎嘎的歌單`
         }
           , X = () => new Promise(T => {
             if (document.readyState === "complete") {

@@ -982,8 +982,9 @@ body {
 
 /* ✅ 更改 3D 球形模式中的歌名顏色 */
 [data-v-ecf77b53] .tag-cloud-item {
-    color: #ffa0cf !important; /* 這裡換成你想要的粉色代碼 */
+    color: #fd6bb4 !important; /* 這裡換成你想要的粉色代碼 */
     font-size: 1em;
+    -webkit-text-stroke: 0.01px #000000;
 }
 
 /* 如果有 SC (發光) 效果的文字也要改顏色 */
@@ -1214,7 +1215,7 @@ body {
     border-radius: 28px;
     background: #ffffffe6;
     border: 1px solid rgba(255,255,255,.7);
-    box-shadow: 0 36px 90px #0f172a40;
+    box-shadow: 0 36px 90px #cc69ae;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1240,24 +1241,24 @@ body {
     font-size: 28px;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #0f172aeb
+    color: #510101eb
 }
 
 .random-subtitle[data-v-3d17bb05] {
     margin-top: 6px;
     font-size: 13px;
-    color: #33415599
+    color: #171d26
 }
 
 .random-refresh[data-v-3d17bb05] {
     margin-top: 12px;
-    padding: 6px 14px;
+    padding: 10px 20px;
     border-radius: 999px;
     border: 1px solid rgba(148,163,184,.5);
     background: #fffc;
     color: #1e293bd9;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
     transition: all .2s ease
 }
@@ -1340,11 +1341,11 @@ body {
 
 .card-back[data-v-3d17bb05] {
     transform: rotateY(180deg);
-    --glow: rgba(84, 163, 255, .6);
-    --glow-strong: rgba(84, 163, 255, .95);
+    --glow: rgba(0, 0, 0, 0.142);
+    --glow-strong: rgb(106, 225, 255);
     background: #fffffffa;
     border: 1px solid var(--glow-strong);
-    box-shadow: 0 12px 24px #0f172a1f,0 0 18px var(--glow);
+    box-shadow: 0 12px 24px #ffffff,0 0 18px var(--glow);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1432,7 +1433,7 @@ body {
     padding: 2px 10px;
     border-radius: 999px;
     background: #1e242a14;
-    color: #1e242acc;
+    color: #693702;
     border: 1px solid rgba(30,36,42,.12);
     font-size: 11px
 }
@@ -1443,7 +1444,7 @@ body {
     padding: 8px 12px;
     margin-top: 4px;
     background: #1e242a0f;
-    color: #1e242ae6;
+    color: #0080ff;
     border: 1px solid rgba(30,36,42,.2);
     font-weight: 600;
     cursor: pointer;
@@ -1893,4 +1894,63 @@ input[type="range"] { width: 100%; cursor: pointer; }
 .random-close:hover {
     opacity: 1;
     transform: scale(1.1);
+}
+
+/* ✅ 深色模式下，詳情彈窗文字變色 */
+[data-theme="dark"] .monitor-card {
+    background: var(--panel-bg) !important;
+    color: #ffffff !important; /* 讓文字變白 */
+}
+
+[data-theme="dark"] .monitor-title, 
+[data-theme="dark"] .monitor-row, 
+[data-theme="dark"] .monitor-meta,
+[data-theme="dark"] .monitor-tag {
+    color: #ffffff !important;
+}
+
+/* 讓標籤背景稍微深一點以區隔文字 */
+[data-theme="dark"] .monitor-tag {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 讓關閉按鈕也變白 */
+[data-theme="dark"] .monitor-close {
+    color: #ffffff !important;
+}
+
+/* 讓複製歌名按鈕在深色模式更明顯 */
+[data-theme="dark"] .monitor-copy {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+button[data-v-ecf77b53]:not(aside button) {
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); /* 現代藍色漸層 */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px; /* 圓潤的橢圓按鈕 */
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); /* 按鈕陰影 */
+    transition: all 0.3s ease; /* 增加過渡動畫 */
+    margin-top: 20px;
+}
+
+button[data-v-ecf77b53]:not(aside button):hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); /* 懸停時顏色加深 */
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px); /* 懸停時輕微上移 */
+}
+
+/* 修改 main 容器，增加背景色和卡片效果 */
+main[data-v-ecf77b53] {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* 輕微漸層背景 */
+    border-radius: 20px; /* 圓角 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* 卡片陰影，增加立體感 */
+    padding: 20px;
 }

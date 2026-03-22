@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>嘎嘎的專屬歌單</title>
+    <!-- ✅ 網頁標籤標題已更名 -->
+    <title>嘎嘎的歌單</title>
     
     <link rel="stylesheet" href="index-TtaK3aRU.css">
     
     <style>
-        
-
         :root { --my-avatar: url('avatar.jpg'); }
         html, body { margin: 0; padding: 0; width: 100%; height: 100%; background-color: transparent !important; }
 
@@ -21,7 +20,6 @@
 
         #app, .app-root, .app-shell { background: transparent !important; transition: opacity 0.3s ease; }
         
-        /* ✅ 讓所有區塊應用變數 */
         .sidebar-body, .app-card, .main-card, .monitor-card, .profile-card, .random-shell {
             background: var(--panel-bg) !important;
             color: var(--text-color) !important;
@@ -30,15 +28,11 @@
             transition: all 0.3s ease !important;
         }
 
-        
-
-        /* 文字顏色同步 */
         .sidebar-name, .sidebar-count, .unit-text, .song-title-text, .monitor-title {
             color: var(--text-color) !important;
         }
 
         .ui-hidden #app { opacity: 0 !important; pointer-events: none !important; }
-
         .avatar { background-image: var(--my-avatar) !important; background-size: cover !important; border-radius: 50% !important; border: 2px solid #b3e5fc !important; }
         img[src*="playing_cards"]:not(.sidebar-action-icon) { display: none !important; }
 
@@ -67,7 +61,12 @@
         .slider-group label { font-size: 11px; opacity: 0.8; min-width: 30px; font-weight: bold; }
         input[type="range"] { flex: 1; height: 12px; cursor: pointer; accent-color: #3949ab; }
 
-        /* ✅ 深淺切換按鈕樣式 (標題右邊) */
+
+        /* ✅ 4. 深色模式下強化發光 */
+        [data-theme="dark"] .tag-cloud-item:hover {
+            text-shadow: 0 0 15px #b3e5fc, 0 0 30px #b3e5fc !important; /* 霓虹藍光 */
+        }
+        /* ✅ 深淺切換按鈕樣式 */
         .theme-toggle-btn {
             display: inline-flex;
             align-items: center;
@@ -122,7 +121,6 @@
     </style>
 </head>
 <body>
-    <!-- ✅ 按鈕現在由 JS 動態注入到標題旁邊，此處 HTML 結構保持簡潔 -->
     <video autoplay muted loop playsinline id="fixed-bg-video" class="my-permanent-bg">
         <source src="background.mp4" type="video/mp4">
     </video>
@@ -155,18 +153,27 @@
             const bgImg = document.querySelector('.background-image');
             if (bgImg) { bgImg.remove(); }
 
-            // ✅ 注入深淺色切換按鈕到「嘎嘎的專屬歌單」右邊
+            // ✅ 注入深淺色切換按鈕並修改標題名稱
             const nameDiv = document.querySelector('.sidebar-name');
-            if (nameDiv && !document.getElementById('injected-theme-btn')) {
-                const themeBtn = document.createElement('button');
-                themeBtn.id = 'injected-theme-btn';
-                themeBtn.className = 'theme-toggle-btn';
-                themeBtn.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-                themeBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    toggleTheme();
-                };
-                nameDiv.appendChild(themeBtn);
+            if (nameDiv) {
+                // 強制修改顯示文字為「嘎嘎的歌單」
+                if (nameDiv.firstChild && nameDiv.firstChild.nodeType === 3) {
+                    nameDiv.firstChild.textContent = "嘎嘎的歌單";
+                }
+                
+                if (!document.getElementById('injected-theme-btn')) {
+                    const themeBtn = document.createElement('button');
+                    themeBtn.id = 'injected-theme-btn';
+                    themeBtn.className = 'theme-toggle-btn';
+                    // ✅ 新增滑鼠靠近時的提示框文字
+                    themeBtn.title = "深淺模式";
+                    themeBtn.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+                    themeBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        toggleTheme();
+                    };
+                    nameDiv.appendChild(themeBtn);
+                }
             }
 
             // 動態注入隱藏按鈕
@@ -311,6 +318,19 @@
         });
         document.addEventListener('mousemove', (e) => { if (!isDragging) return; playerContainer.style.right = 'auto'; playerContainer.style.bottom = 'auto'; playerContainer.style.left = (e.clientX - offsetX) + 'px'; playerContainer.style.top = (e.clientY - offsetY) + 'px'; });
         document.addEventListener('mouseup', () => { isDragging = false; });
+
+                // 禁用右鍵選單
+        /*document.oncontextmenu = () => false;
+
+        // 禁用 F12、Ctrl+Shift+I、Ctrl+U (檢視原始碼)
+        document.onkeydown = (e) => {
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
+                (e.ctrlKey && e.keyCode === 85)) {
+                return false;
+            }
+        };*/
+
     </script>
 </body>
 </html>
