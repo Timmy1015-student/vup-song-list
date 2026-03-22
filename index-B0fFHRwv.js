@@ -10625,7 +10625,7 @@ R.load()
                 _: 1
             })]),
             _: 1
-        })])]), V("div", c2, [y[26] || (y[26] = V("span", null, "© 2026 陳霆嘉．版權所有", -1)), V("span", null, "Last Updated: " + be(b.value), 1)]), d.value ? (Y(),
+        })])]), V("div", c2, [y[26] || (y[26] = V("span", null, "© 2026 陳霆嘉．版權所有", -1)), V("span", null, "Last Updated: 2026 / 03 / 22", 1)]), d.value ? (Y(),
         M("div", {
             key: 3,
             class: "profile-modal",
@@ -10634,7 +10634,7 @@ R.load()
             class: "profile-close",
             type: "button",
             onClick: y[12] || (y[12] = R => d.value = !1)
-        }, "×"), y[27] || (y[27] = go('<div class="profile-section"><div class="profile-title">🎤 關於嘎嘎 Gaga</div><div class="profile-item"><span class="profile-label">身份：</span><span>曾任熱音社男主唱 (兩任)</span></div><div class="profile-item"><span class="profile-label">特質：</span><span>INTJ / 喜歡音樂與程式</span></div><div class="profile-item"><span class="profile-label">愛好：</span><span>雀魂 / 唱歌 / 睡覺 / 豆漿紅茶</span></div></div><div class="profile-section"><div class="profile-title">🎵 歌單說明</div><div class="profile-rule">✨ 這裡收藏了許多我喜歡唱，或是覺得動聽的歌。</div><div class="profile-rule">✨ 點擊歌名即可自動播放 YouTube 影片。</div><div class="profile-rule">✨ 歡迎在這聽歌！</div></div>', 2))])])) : de("", !0), pe(F3, {
+        }, "×"), y[27] || (y[27] = go(`<div class="profile-section"> <div class="profile-title">🎤 關於嘎嘎 Gaga</div> <div class="profile-item"><span class="profile-label">身份：</span><span>曾任熱音社男主唱 (兩任)</span></div> <div class="profile-item"><span class="profile-label">特質：</span><span>INTJ / 喜歡音樂與程式</span></div> <div class="profile-item"><span class="profile-label">愛好：</span><span>雀魂 / 唱歌 / 睡覺 / 豆漿紅茶</span></div> </div> <div class="profile-section"> <div class="profile-title">🎵 歌單說明</div> <div class="profile-rule">✨ 這裡收藏了許多我喜歡唱，或是覺得動聽的歌。</div> <div class="profile-rule">✨ 點擊歌名即可自動播放音樂，歡迎在這聽歌！</div> </div> <div class="profile-section"> <div class="profile-title">🛠️ 開發紀錄與致敬</div> <div class="profile-rule">✨ UI 概念啟發自 <b>nilianlily.cn</b>。</div> <div class="profile-rule">✨ 本站本人進行代碼重構並新增音樂播放等眾多功能</b>。</div> <div class="profile-rule">✨ 透過技術優化，實現更符合個人化需求的音樂工具。</div> </div>`, 2))])])) : de("", !0), pe(F3, {
             song: n.value,
             onClose: y[14] || (y[14] = R => n.value = null)
         }, null, 8, ["song"]), pe(h3, {
@@ -10647,3 +10647,4 @@ R.load()
   , k0 = c1(b2);
 k0.use(d1());
 k0.mount("#app");
+
