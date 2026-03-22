@@ -7,10 +7,12 @@
     <title>嘎嘎的歌單</title>
     
     <link rel="stylesheet" href="index-TtaK3aRU.css">
-    
+    <!-- ✅ 將 assets/ 移除，直接讀取根目錄檔案 -->
+    <img id="nyan-cursor" src="nat927-ezgif.com-ani-to-gif-converter.gif" alt="cursor" style="position:fixed; pointer-events:none; z-index:9999999; width:32px; display:none;">
+
     <style>
         :root { --my-avatar: url('avatar.jpg'); }
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; background-color: transparent !important; }
+        html, body { cursor: none;margin: 0; padding: 0; width: 100%; height: 100%; background-color: transparent !important; }
 
         /* 背景影片 */
         .background-video, video[class*="background"] {
@@ -38,7 +40,7 @@
 
         /* 迷你播放器容器 */
         #yt-player-container {
-            position: fixed; bottom: 20px; right: 20px; z-index: 2147483647 !important; 
+            position: fixed; bottom: 20px; right: 20px; z-index: 21474 !important; 
             background: var(--panel-bg) !important; 
             color: var(--text-color) !important;
             padding: 15px; border-radius: 12px; display: none; 
@@ -87,6 +89,44 @@
         }
         .theme-toggle-btn:hover { transform: scale(1.1); background: #5c6bc0; }
 
+        /* 強制自定義滑鼠在絕對最頂層 */
+        #nyan-cursor {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            pointer-events: none !important; /* 確保點擊可以穿透圖片 */
+            /* 使用 32-bit 整數最大值，確保在所有彈窗、播放器之上 */
+            z-index: 2147483647 !important; 
+            width: 32px;
+            display: none;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+            /* 讓圖片中心對準真實滑鼠座標 */
+            transform: translate(-50%, -50%); 
+        }
+
+/* 全域隱藏原生游標（包含點擊時） */
+*, *::before, *::after, a, button, [role="button"], .tag-cloud-item {
+    cursor: none !important;
+}
+
+        .tool-btn {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            color: #050505;
+            border: 1px solid #dddfe2;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+            transition: var(--transition)
+        }
+
         .mini-hide-btn {
             display: inline-block;
             margin-left: 8px;
@@ -101,7 +141,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 2147483647 !important;
+            z-index: 2147 ;
             pointer-events: auto !important;
         }
 
@@ -245,6 +285,19 @@
     <script type="module" src="index-B0fFHRwv.js"></script>
 
     <script>
+        const nyanCursor = document.getElementById('nyan-cursor');
+        // 監聽鼠標移動
+        document.addEventListener('mousemove', (e) => {
+            nyanCursor.style.display = 'block';
+            nyanCursor.style.left = e.clientX + 'px';
+            nyanCursor.style.top = e.clientY + 'px';
+        });
+        // 離開視窗隱藏
+        document.addEventListener('mouseleave', () => { nyanCursor.style.display = 'none'; });
+        // 點擊縮放效果
+        document.addEventListener('mousedown', () => nyanCursor.style.transform = 'scale(0.8)');
+        document.addEventListener('mouseup', () => nyanCursor.style.transform = 'scale(1)');
+
         let currentAudio = null;
 
         document.addEventListener('click', function(e) {
