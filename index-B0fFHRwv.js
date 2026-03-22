@@ -10412,9 +10412,7 @@ R.load()
         return Ct(async () => {
             try {
                 const T = window.location.hostname;
-                p.value = D(T);
-                const y = i() ? "/favicon.ico" : r(T) ? `${Ab}favicon.ico` : `${Tb}${C(T)}/favicon.ico`;
-                _(y),
+                p.value = D(T); 
                 await N(),
                 $(e.alias),
                 hs( () => e.alias, Ne => $(Ne), {
