@@ -5104,13 +5104,33 @@ setup(s, { emit: t }) {
                 ])
             ]),
             V("div", S1, [
-                V("div", {
-                    class: "col col-title song-title-clickable",
-                    // 修正點 4：桌面版點擊也要傳入 f 和 b
-                    onClick: b => e(f, b)
-                }, [V("span", Y1, be(f.title), 1), f.isNew ? (Y(), M("span", q1, "NEW")) : de("", !0), f.isPaid ? (Y(), M("span", X1, "付费")) : de("", !0)], 8, K1),
-                // ... 後續代碼保持不變
-            ])
+    // 1. 歌名
+    V("div", {
+        class: "col col-title song-title-clickable",
+        onClick: b => e(f, b)
+    }, [
+        V("span", Y1, be(f.title), 1), 
+        f.isNew ? (Y(), M("span", q1, "NEW")) : de("", !0), 
+        f.isPaid ? (Y(), M("span", X1, "付费")) : de("", !0)
+    ], 8, K1),
+    
+    // 2. 歌手 (新增這段)
+    V("div", Z1, be(f.artist || "-"), 1),
+    
+    // 3. 語言 (新增這段)
+    V("div", Q1, be(f.language || "-"), 1),
+    
+    // 4. 風格 (新增這段)
+    V("div", M1, be(f.genre || "-"), 1),
+    
+    // 5. SC (新增這段)
+    V("div", P1, [
+        f.sc ? pe(Af, { sc: f.sc }, null, 8, ["sc"]) : de("", !0)
+    ]),
+    
+    // 6. 備註 (新增這段)
+    V("div", B1, be(f.remarks || ""), 1)
+])
         ], 10, k1))), 128))]))
 }
 })

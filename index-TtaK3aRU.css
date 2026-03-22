@@ -1642,10 +1642,12 @@ body {
 }
 
 /* 3. 重新分配表格空間 (只保留：歌名、歌手、語言、風格) */
+/* 修正後的表格空間分配：歌名、歌手、語言、風格、SC、備註 */
 @media (min-width: 900px) {
     .song-desktop, .list-header {
-        grid-template-columns: minmax(0, 3.5fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) 0px 0px !important;
-        gap: 15px;
+        /* 將最後兩項從 0px 改回 1fr 或 0.8fr */
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1fr) !important;
+        gap: 12px;
     }
 }
 
