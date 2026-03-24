@@ -10215,7 +10215,7 @@ const Bh = {
     setup(s) {
         const e = p1()
           , t = he(null)
-          , c = he("list")
+          , c = he("danmaku")
           , f = he(null)
           , b = he(new Date().toISOString().slice(0, 10))
           , d = he(!1)

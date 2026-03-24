@@ -484,8 +484,8 @@ body {
 
     .app-card {
         --glass-radius: 28px;
-        --glass-border: 1px solid rgba(255, 255, 255, .2);
-        --glass-shadow: 0 30px 80px rgba(15, 23, 42, .2);
+        --glass-border: 1px solid rgb(255, 0, 0);
+        --glass-shadow: 0 30px 80px rgb(255, 255, 255);
         --glass-padding: 24px
     }
 
@@ -498,7 +498,7 @@ body {
         display: flex;
         flex-direction: column;
         height: 100%;
-        background: #0f172a14;
+        background: #ffffff14;
         border-radius: 18px;
         padding: 16px
     }
@@ -713,7 +713,7 @@ body {
 }
 
 .glass[data-v-752da1e6] {
-    background: var(--glass-bg, rgb(255, 255, 255));
+    background: var(--glass-bg, rgba(0, 0, 0, 0.256));
     border: var(--glass-border, 1px solid rgb(255, 255, 255));
     border-radius: var(--glass-radius, 18px);
     box-shadow: var(--glass-shadow, 0 20px 60px rgb(0, 76, 255));
@@ -982,9 +982,10 @@ body {
 
 /* ✅ 更改 3D 球形模式中的歌名顏色 */
 [data-v-ecf77b53] .tag-cloud-item {
-    color: #fd6bb4 !important; /* 這裡換成你想要的粉色代碼 */
+    color: #ef41ac !important; /* 這裡換成你想要的粉色代碼 */
     font-size: 1em;
-    -webkit-text-stroke: 0.01px #000000;
+    text-shadow: 0px 0px 3px rgb(216, 99, 245) !important;
+    
 }
 
 /* 如果有 SC (發光) 效果的文字也要改顏色 */
@@ -1021,7 +1022,7 @@ body {
 /* 讓往左跑的文字變成翠綠色 */
 .danmaku-item[data-v-4fe8bfdf] {
     color: #ecc5e0 !important;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6) !important;
+    text-shadow: 1px 1px 3px rgb(0, 0, 0) !important;
 }
 
 /* 彈幕 SC 文字滑鼠移入 */
@@ -1788,7 +1789,7 @@ input[type="range"] { width: 100%; cursor: pointer; }
 
 /* ✅ 基礎顏色變數 */
 :root {
-    --panel-bg: rgba(255, 255, 255, 0.85);
+    --panel-bg: rgba(255, 255, 255, 0.729);
     --text-color: #0f172a;
     --border-color: rgba(0, 0, 0, 0.1);
 }
@@ -1798,7 +1799,7 @@ input[type="range"] { width: 100%; cursor: pointer; }
 
 /* 1. 淺色模式下：列表歌曲框為黑色，文字為白色 */
 .song-list .song-row {
-    background: #6d6c6dbb !important; /* 只有列表裡的框變黑 */
+    background: #2f2a2e79 !important; /* 只有列表裡的框變黑 */
     transition: all 0.3s ease !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
