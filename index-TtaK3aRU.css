@@ -982,9 +982,9 @@ body {
 
 /* ✅ 更改 3D 球形模式中的歌名顏色 */
 [data-v-ecf77b53] .tag-cloud-item {
-    color: #ef41ac !important; /* 這裡換成你想要的粉色代碼 */
+    color: #ff00b7 !important; /* 這裡換成你想要的粉色代碼 */
     font-size: 1em;
-    text-shadow: 0px 0px 3px rgb(216, 99, 245) !important;
+    text-shadow: 0px 0px 3px rgba(241, 195, 252, 0.379) !important;
     
 }
 
