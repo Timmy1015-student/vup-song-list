@@ -5099,7 +5099,7 @@ setup(s, { emit: t }) {
                         class: "song-title song-title-clickable",
                         // 修正點 3：點擊時傳入整個 f (歌曲物件) 和 b (事件)
                         onClick: b => e(f, b) 
-                    }, [mi(be(f.title) + " ", 1), f.isNew ? (Y(), M("span", $1, "NEW")) : de("", !0), f.isPaid ? (Y(), M("span", N1, "付费")) : de("", !0)], 8, R1),
+                    }, [mi(be(f.title) + " ", 1), f.isNew ? (Y(), M("span", $1, "NEW")) : de("", !0), f.isPaid ? (Y(), M("span", N1, "付費")) : de("", !0)], 8, R1),
                     // ... 後續代碼保持不變
                 ])
             ]),
@@ -5111,7 +5111,7 @@ setup(s, { emit: t }) {
     }, [
         V("span", Y1, be(f.title), 1), 
         f.isNew ? (Y(), M("span", q1, "NEW")) : de("", !0), 
-        f.isPaid ? (Y(), M("span", X1, "付费")) : de("", !0)
+        f.isPaid ? (Y(), M("span", X1, "付費")) : de("", !0)
     ], 8, K1),
     
     // 2. 歌手 (新增這段)
@@ -10662,7 +10662,7 @@ R.load()
             class: "profile-close",
             type: "button",
             onClick: y[12] || (y[12] = R => d.value = !1)
-        }, "×"), y[27] || (y[27] = go(`<div class="profile-section"> <div class="profile-title">🎤 關於嘎嘎 Gaga</div> <div class="profile-item"><span class="profile-label">身份：</span><span>曾任熱音社男主唱 (兩任)</span></div> <div class="profile-item"><span class="profile-label">特質：</span><span>INTJ / 喜歡音樂與程式</span></div> <div class="profile-item"><span class="profile-label">愛好：</span><span>雀魂 / 唱歌 / 睡覺 / 豆漿紅茶</span></div> </div> <div class="profile-section"> <div class="profile-title">🎵 歌單說明</div> <div class="profile-rule">✨ 這裡收藏了許多我喜歡唱，或是覺得動聽的歌。</div> <div class="profile-rule">✨ 點擊歌名即可自動播放音樂，歡迎在這聽歌！</div> </div> <div class="profile-section"> <div class="profile-title">🛠️ 開發紀錄與致敬</div> <div class="profile-rule">✨ UI 概念啟發自 <b>nilianlily.cn</b>。</div> <div class="profile-rule">✨ 本站本人進行代碼重構並新增音樂播放等眾多功能</b>。</div> <div class="profile-rule">✨ 透過技術優化，實現更符合個人化需求的音樂工具。</div> </div>`, 2))])])) : de("", !0), pe(F3, {
+        }, "×"), y[27] || (y[27] = go(`<div class="profile-section"> <div class="profile-title">🎤 關於嘎嘎 Gaga</div> <div class="profile-rule"><span class="profile-rule">身份：</span><span>曾任熱音社男主唱 (兩任)</span></div> <div class="profile-rule"><span class="profile-rule">特質：</span><span>INTJ / 喜歡音樂與程式</span></div> <div class="profile-rule"><span class="profile-rule">愛好：</span><span>雀魂 / 唱歌 / 睡覺 / 豆漿紅茶</span></div> </div> <div class="profile-rule"><div class="profile-section"> <div class="profile-title">🎵 歌單說明</div> <div class="profile-rule">✨ 這裡收藏了許多我喜歡唱，或是覺得動聽的歌。</div> <div class="profile-rule">✨ 點擊歌名即可自動播放音樂，歡迎在這聽歌！</div> </div> <div class="profile-section"> <div class="profile-title">🛠️ 開發紀錄與致敬</div> <div class="profile-rule">✨ UI 概念啟發自 <b>nilianlily.cn</b>。</div> <div class="profile-rule">✨ 本站本人進行代碼重構並新增音樂播放等眾多功能</b>。</div> <div class="profile-rule">✨ 透過技術優化，實現更符合個人化需求的音樂工具。</div> </div>`, 2))])])) : de("", !0), pe(F3, {
             song: n.value,
             onClose: y[14] || (y[14] = R => n.value = null)
         }, null, 8, ["song"]), pe(h3, {
