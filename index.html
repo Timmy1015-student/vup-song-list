@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200">
     <!-- ✅ 網頁標籤標題已更名 -->
     <title>嘎嘎的歌單</title>
     
@@ -76,8 +76,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 26px;
-            height: 26px;
+            width: 32px;
+            height: 32px;
             margin-left: 10px;
             padding: 0;
             background: #f9f793;
@@ -132,9 +132,9 @@
 
         .mini-hide-btn {
             display: inline-block;
-            margin-left: 8px;
-            padding: 2px 6px;
-            font-size: 10px;
+            margin-left: 4px;
+            padding: 6px 8px;
+            font-size: 12px;
             background: #3949ab;
             color: white !important;
             border: 1px solid #fff;
@@ -220,7 +220,7 @@
                     themeBtn.id = 'injected-theme-btn';
                     themeBtn.className = 'theme-toggle-btn';
                     // ✅ 新增滑鼠靠近時的提示框文字
-                    themeBtn.title = "深淺模式";
+                    themeBtn.title = "深淺色模式";
                     themeBtn.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
                     themeBtn.onclick = (e) => {
                         e.stopPropagation();
@@ -556,7 +556,11 @@ document.addEventListener('click', function(e) {
         });
         return;
     }
-
+// ✅ 「主播檔案」按鈕直接執行原本的功能（例如打開 Profile 視窗），不觸發確認框
+document.querySelector('.profile-btn').addEventListener('click', function() {
+    // 這裡放原本開啟檔案的邏輯，例如：
+    // profileVisible.value = true; 
+});
     // --- ✅ 需求二：修改 monitor-copy，只播放且背景複製，不跳中間字 ---
     if (e.target && e.target.classList.contains('monitor-copy')) {
         const songTitleEl = document.querySelector('.monitor-title');

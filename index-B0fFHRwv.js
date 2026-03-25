@@ -10473,7 +10473,7 @@ R.load()
             V("div", V3, be(te(e).alias || "嘎嘎的歌單")), 
             V("div", z3, [
                 V("button", {
-                    class: "sidebar-link sidebar-profile-button",
+                    class: "profile-btn",
                     type: "button",
                     onClick: y[0] || (y[0] = R => d.value = !0)
                 }, " 主播檔案 "), 
